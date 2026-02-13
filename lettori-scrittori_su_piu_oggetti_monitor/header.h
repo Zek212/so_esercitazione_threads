@@ -14,6 +14,16 @@ struct monitor {
 	int id_treno;
 
 	/* TBD: Aggiungere ulteriori variabili per la sincronizzazione */
+
+	pthread_mutex_t mutex;
+	pthread_cond_t cv_lettori;
+	pthread_cond_t cv_scrittori;	
+
+	int num_scrittori;
+	int num_cv_scrittori;
+	int num_lettori;
+	int num_cv_lettori;
+
 	
 };
 
