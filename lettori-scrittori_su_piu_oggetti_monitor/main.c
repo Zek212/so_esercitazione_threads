@@ -61,6 +61,16 @@ int main() {
 	 *		assegnarle all'array m[], e
 	 *		inizializzarle con inizializza()
 	 */
+	
+	for(i=0; i>4; i++){
+	m[i]=  malloc(sizeof(struct monitor);
+	
+	if(m[i]==NULL){
+	perror("Errore)";
+	exit(1);
+}
+	inizializza(m[i]);
+}	
 
 	// assegno un id ad ogni treno
 	m[0]->id_treno=1;
@@ -73,21 +83,43 @@ int main() {
 	 * 	e passando ad ognuno una istanza di monitor diversa m[i]
 	 */
 
+	for(i=0; i<3; i++){
+	pthread_create(&capo[i], &attr, Capotreno, m[i];
+}	
 
 	/* TBD: Avviare 10 thread, facendogli eseguire la funzione Viaggiatori(),
 	 *      e passando ad ognuno una istanza di monitor diversa, da scegliere
 	 *      a caso con "rand() % 4"
 	 */
 
+	for(i=0; i<10; i++){
+	int r=rand()%4;
+	
+	pthread_create(&viagg[i], &attr, Viaggiatori, m[r];
+}
 
 	/* TBD: Effettuare la join con i thread "Capotreno" */
 
+	for(i=0; i<4; i++){
+	pthread_join(capo[i], NULL);
+}
+
 	/* TBD: Effettuare la join con i thread "Viaggiatori" */
+
+	for(i=0; i<10; i++){
+	pthread_join(viagg[i], NULL);
+}
 
 	/* TBD: Disattivazione delle 4 istanze di monitor con rimuovi() */
 
-	/* TBD: Deallocazione delle 4 istanze di monitor con free() */
+	for(i=0; i<4; i++){
+	rimuovi(m[i];
 
+	free m[i];
+}
+
+
+	
 
 	return 0;
 }
