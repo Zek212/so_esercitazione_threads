@@ -10,7 +10,20 @@ typedef struct{
 	int buffer[DIM];
 
 	/* TBD: Aggiungere ulteriori variabili per la sincronizzazione */
-    
+	
+	int testa;
+	int coda;
+	int contatore;
+	
+	pthread_mutex_t mutex;
+
+	pthread_cond_t not_empty;
+	pthread_cond_t not_full;
+
+	pthread_cond_t ok_prio2; 
+
+	int threads_prio1; //prod alta priorità sospesi
+	int threads_prio2; //prod basa priorità sospesi   
 } PriorityProdCons;
 
 
