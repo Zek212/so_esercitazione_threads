@@ -11,7 +11,10 @@ typedef struct Stack {
 	int testa;
 
 	/* TBD: Aggiungere variabili per la sincronizzazione */
-
+	
+	pthread_mutex_t mutex;
+        pthread_cond_t  vuoto;
+        pthread_cond_t  pieno;
 } Stack;
 
 void StackInit(Stack * s, int dim);	// alloca dinamicamente "dim" elementi
